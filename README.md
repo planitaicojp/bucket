@@ -6,13 +6,11 @@
 
 ```powershell
 scoop bucket add planitaicojp https://github.com/planitaicojp/bucket
-scoop install freee
+scoop install lm
 ```
 
 ## Available Apps
 
 | App | Description |
 |-----|-------------|
-| [freee](https://github.com/planitaicojp/freee-cli) | CLI tool for freee public API |
-
-Manifests are automatically updated by [GoReleaser](https://goreleaser.com/) on each release.
+| [lm](https://github.com/planitaicojp/lm-cli) | CLI tool for LINE Messaging API |

@@ -1,0 +1,81 @@
+name: Update Scoop Manifests
+
+on:
+  repository_dispatch:
+    types: [update-scoop]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 0.4.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "version=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download checksums
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          gh release download "v${VERSION}" \
+            --repo planitaicojp/lm-cli \
+            --pattern 'checksums.txt' \
+            --output checksums.txt
+
+      - name: Update lm.json
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          AMD64_HASH=$(grep "windows_amd64.zip" checksums.txt | awk '{print $1}')
+          ARM64_HASH=$(grep "windows_arm64.zip" checksums.txt | awk '{print $1}')
+
+          cat > lm.json << EOF
+          {
+              "version": "${VERSION}",
+              "architecture": {
+                  "64bit": {
+                      "url": "https://github.com/planitaicojp/lm-cli/releases/download/v${VERSION}/lm-cli_${VERSION}_windows_amd64.zip",
+                      "bin": [
+                          "lm.exe"
+                      ],
+                      "hash": "${AMD64_HASH}"
+                  },
+                  "arm64": {
+                      "url": "https://github.com/planitaicojp/lm-cli/releases/download/v${VERSION}/lm-cli_${VERSION}_windows_arm64.zip",
+                      "bin": [
+                          "lm.exe"
+                      ],
+                      "hash": "${ARM64_HASH}"
+                  }
+              },
+              "homepage": "https://planitaicojp.github.io/lm-cli-pages/",
+              "license": "Apache-2.0",
+              "description": "CLI tool for LINE Messaging API"
+          }
+          EOF
+
+      - name: Commit and push
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add lm.json
+          git diff --staged --quiet || {
+            git commit -m "chore: update lm to v${VERSION}"
+            git push
+          }
