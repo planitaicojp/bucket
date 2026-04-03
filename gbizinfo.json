@@ -6,14 +6,14 @@
             "bin": [
                 "gbizinfo.exe"
             ],
-            "hash": "143df86916d183b1a9f7d6dda3046807eb8f3e6033bcb3a5c7c56ef8effd124d"
+            "hash": "fd35bea13048dafc78ffbb599379bda55f1a5047c51049dce4a52e87e9a6f5f6"
         },
         "arm64": {
             "url": "https://github.com/planitaicojp/gbizinfo-cli/releases/download/v0.1.0/gbizinfo-cli_0.1.0_windows_arm64.zip",
             "bin": [
                 "gbizinfo.exe"
             ],
-            "hash": "cf2efd08924d7bb4f7ad69254a0fec47487da2b7283e90fef66123e76c6f0b87"
+            "hash": "58d145a1f04a04fc1f4c4ffe67e87ea7dbd17240bab511a61d121659603d9566"
         }
     },
     "homepage": "https://github.com/planitaicojp/gbizinfo-cli",
