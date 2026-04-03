@@ -1,0 +1,22 @@
+{
+    "version": "0.1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/planitaicojp/edinet-cli/releases/download/v0.1.0/edinet-cli_0.1.0_windows_amd64.zip",
+            "bin": [
+                "edinet.exe"
+            ],
+            "hash": "428a57ab58a4774d1d39a7217ab6644a75811a2e1a1d4fc9708b680fd98f2e55"
+        },
+        "arm64": {
+            "url": "https://github.com/planitaicojp/edinet-cli/releases/download/v0.1.0/edinet-cli_0.1.0_windows_arm64.zip",
+            "bin": [
+                "edinet.exe"
+            ],
+            "hash": "5fb74dace6f6337e7cf42c8c9b8238a950acead2340c9047cb4b776a069edf93"
+        }
+    },
+    "homepage": "https://github.com/planitaicojp/edinet-cli",
+    "license": "Apache-2.0",
+    "description": "CLI tool for EDINET API v2 - 金融庁 開示書類の検索・取得"
+}
