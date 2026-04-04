@@ -1,19 +1,19 @@
 {
-    "version": "0.3.0",
+    "version": "0.3.1",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/planitaicojp/edinet-cli/releases/download/v0.3.0/edinet-cli_0.3.0_windows_amd64.zip",
+            "url": "https://github.com/planitaicojp/edinet-cli/releases/download/v0.3.1/edinet-cli_0.3.1_windows_amd64.zip",
             "bin": [
                 "edinet.exe"
             ],
-            "hash": "9a18845fe3c0a653bd9b4fef96ef3479231d9f781e9ac56ba264568a89e5ac14"
+            "hash": "54b349b5dfe356a3616823d14e3738c469b0c2ccb3e4bc30744a71ffe791a9a5"
         },
         "arm64": {
-            "url": "https://github.com/planitaicojp/edinet-cli/releases/download/v0.3.0/edinet-cli_0.3.0_windows_arm64.zip",
+            "url": "https://github.com/planitaicojp/edinet-cli/releases/download/v0.3.1/edinet-cli_0.3.1_windows_arm64.zip",
             "bin": [
                 "edinet.exe"
             ],
-            "hash": "594fcbc23bd4855c9c468087dcb52d85c4bd78e737535e74c8e19f6d3cebf634"
+            "hash": "d30dad865860b9e2dca5eb0d74d44bb9f166874fd84da28f233565596ebb99c9"
         }
     },
     "homepage": "https://github.com/planitaicojp/edinet-cli",
